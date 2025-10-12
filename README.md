@@ -1,2 +1,3 @@
-# hexagon-sdk
-Repackaged Hexagon SDK (https://softwarecenter.qualcomm.com/catalog/item/Hexagon_SDK)
+This repository contains Hexagon SDK releases trimmed and repackaged for Github Actions and other CI and Dev Container environments.
+
+For more complete and official versions please see https://softwarecenter.qualcomm.com/catalog/item/Hexagon_SDK
