@@ -1,0 +1,25 @@
+diff -ur 6.6.0.0/build/cmake/hexagon_fun.cmake 6.6.0.0-patched/build/cmake/hexagon_fun.cmake
+--- 6.6.0.0/build/cmake/hexagon_fun.cmake	2026-05-13 02:15:16.000000000 -0700
++++ 6.6.0.0-patched/build/cmake/hexagon_fun.cmake	2026-05-13 16:55:48.425157700 -0700
+@@ -15,7 +15,8 @@
+ set(DSP_QUEUE_SUPPORTED 0)
+ # Conditionally include add-on specific function file
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+-    include(${HEXAGON_SDK_ROOT}/addons/wos/build/cmake/windows_fun.cmake)
++    set(ASYNC_RPC_SUPPORTED 1)
++    set(DSP_QUEUE_SUPPORTED 1)
+ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Qnx")
+     include(${HEXAGON_SDK_ROOT}/addons/qnx/build/cmake/qnx_fun.cmake)
+     set(DISABLE_EARLY_WAKEUP 1)
+diff -ur 6.6.0.0/incs/remote.h 6.6.0.0-patched/incs/remote.h
+--- 6.6.0.0/incs/remote.h	2026-05-13 01:52:38.000000000 -0700
++++ 6.6.0.0-patched/incs/remote.h	2026-05-13 17:02:20.038268300 -0700
+@@ -1371,7 +1371,7 @@
+ 
+ 
+ #ifdef _WIN32
+-#include "remote_wos_ext.h" /** For function pointers of remote APIs */
++//#include "remote_wos_ext.h" /** For function pointers of remote APIs */
+ #endif
+ 
+ 
